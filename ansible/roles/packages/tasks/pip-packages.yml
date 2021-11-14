@@ -1,7 +1,7 @@
 ---
 - name: Install Basic Pip Packages
+  become: True  
   pip:
-  become: True
     name:
       - pre-commit
       - virtualenv

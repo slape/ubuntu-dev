@@ -1,17 +1,23 @@
 ---
-- name: Install Terraform gpg key
-  ansible.builtin.rpm_key:
-    state: present
-    key: https://apt.releases.hashicorp.com/gpg
+- name: download hashicorp gpg key
+  get_url:  
+    url: https://apt.releases.hashicorp.com/gpg
+    dest: /usr/share/keyrings/hashicorp-keyring.gpg
+    mode: 0700
 
-- name: Add Terraform repository into sources list
-  ansible.builtin.apt_repository:
-    repo: deb https://apt.releases.hashicorp.com $(lsb_release -cs) main
+- name: Install hashicorp gpg key
+  apt_key:
+    state: present
+    file: /usr/share/keyrings/hashicorp-keyring.gpg 
+
+- name: Add hashicorp repository into sources list
+  apt_repository:
+    repo: deb https://apt.releases.hashicorp.com bionic main
     state: present
 
-- name: Install Terraform Apt Package
+- name: Install Hashicorp Apt Packages
   apt:
     update_cache: yes
-    auto_update: yes
     pkg:
       - terraform
+      - packer

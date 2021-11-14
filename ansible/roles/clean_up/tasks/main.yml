@@ -1,0 +1,11 @@
+---
+- name: Remove personal files before packaging
+  script: find /home/ -user vagrant -exec rm -fr {} \;
+    
+- name: Clean up Apt-get
+  apt:
+    force_apt_get: yes
+    update_cache: yes
+    autoclean: yes
+    auto_remove: yes
+    purge: yes

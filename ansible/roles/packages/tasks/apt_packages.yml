@@ -1,8 +1,18 @@
 ---
-- name: Install Basic Apt Packages
+- name: Update Ubuntu
+  apt:
+    force_apt_get: yes
+    update_cache: yes
+    update_cache_retries: 5
+    update_cache_retry_max_delay: 12
+    upgrade: yes
+    autoclean: yes
+
+- name: Install or upgrade basic Apt packages
   apt:
     update_cache: yes
-    auto_update: yes
+    install_recommends: yes
+    force_apt_get: yes
     pkg:
       - curl 
       - nmap
@@ -14,3 +24,5 @@
       - ca-certificates
       - lsb-release 
       - gnupg
+      - tmux
+      - ufw

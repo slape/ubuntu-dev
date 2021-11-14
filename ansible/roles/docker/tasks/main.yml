@@ -1,18 +1,24 @@
 ---
+- name: Download Docker gpg key
+  get_url:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    dest: /usr/share/keyrings/docker-archive-keyring.gpg
+    mode: 0700
+
 - name: Install Docker gpg key
-  ansible.builtin.rpm_key:
+  apt_key:
     state: present
-    key: https://download.docker.com/linux/ubuntu/gpg
+    file:  /usr/share/keyrings/docker-archive-keyring.gpg
 
 - name: Add Docker repository into sources list
-  ansible.builtin.apt_repository:
-    repo: deb https://brave-browser-apt-release.s3.brave.com/ stable main
+  apt_repository:
+    repo: deb https://download.docker.com/linux/ubuntu/ bionic stable
     state: present
 
 - name: Install Docker Apt Packages
   apt:
+    force_apt_get: yes
     update_cache: yes
-    auto_update: yes
     pkg:
       - docker-ce 
       - docker-ce-cli 

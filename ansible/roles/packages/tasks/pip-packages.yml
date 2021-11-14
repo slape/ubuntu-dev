@@ -1,0 +1,8 @@
+---
+- name: Install Basic Pip Packages
+  pip:
+  become: True
+    name:
+      - pre-commit
+      - virtualenv
+      - ansible

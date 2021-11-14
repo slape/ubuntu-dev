@@ -1,5 +1,17 @@
-curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+---
+- name: Install Terraform gpg key
+  ansible.builtin.rpm_key:
+    state: present
+    key: https://apt.releases.hashicorp.com/gpg
 
-sudo apt-add-repository "deb [arch=$(dpkg --print-architecture)] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+- name: Add Terraform repository into sources list
+  ansible.builtin.apt_repository:
+    repo: deb https://apt.releases.hashicorp.com $(lsb_release -cs) main
+    state: present
 
-sudo apt install terraform
+- name: Install Terraform Apt Package
+  apt:
+    update_cache: yes
+    auto_update: yes
+    pkg:
+      - terraform

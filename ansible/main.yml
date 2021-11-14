@@ -1,0 +1,12 @@
+---
+- name: Provision Developer Environment
+  become: yes
+  roles:
+    - apt_packages
+    - pip_packages
+    - brave
+    - ansible
+    - docker
+    - terraform
+    - az_cli
+    - clean_up

@@ -1,0 +1,11 @@
+---
+- name: Install Basic Apt Packages
+  apt:
+    update_cache: yes
+    auto_update: yes
+    pkg:
+      - curl 
+      - nmap
+      - python3-pip
+      - vim
+      - wget

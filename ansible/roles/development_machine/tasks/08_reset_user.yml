@@ -9,9 +9,8 @@
   user:
     name: developer
     shell: /bin/bash
-    groups: sudo
+    groups: adm,cdrom,sudo,dip,plugdev,lpadmin,lxd,sambashare
     append: yes
-    generate_ssh_key: yes
     password: $6$sU5IUZa.jzAG4zDx$pRysdw52ihkBZI/pcWoMlb4sHUriRSnN69GetV3K8cgfpnfMF2ej5ewQxXBh8umfaJfsybo4zCod/Fp6WeIn41
 
 - name: Cause password to expire on first login
@@ -41,3 +40,9 @@
     owner: developer
     group: developer
     mode: 0644
+
+- name: Remove desktop trash icon
+  shell: sudo -H -u developer gsettings set org.gnome.shell.extensions.desktop-icons show-trash false
+
+- name: Remove desktop home icon
+  shell: sudo -H -u developer gsettings set org.gnome.shell.extensions.desktop-icons show-home false

@@ -1,10 +1,31 @@
 ---
 - name: Change Hostname to 'ubuntu_dev'
   hostname:
-    name: ubuntu_dev
+    name: ubuntuDev
 
 - name: Set a cron job to keep system up to date.
   cron:
     name: "update ssh"
     day: "*/1"
     job: "apt update && apt upgrade"
+
+- name: Disable SSH Password Login
+  copy:
+    src: sshd_config
+    dest: /etc/ssh/sshd_config
+    owner: root
+    group: root 
+    mode: '0644'
+
+- name: Create firewall rules to allow ssh
+  ufw:
+    rule: allow
+    port: '22'
+
+- name: Enable basic firewall (ufw)
+  ufw:
+    default: reject
+    direction: incoming
+    from_ip: any
+    interface: eth0
+    state: enabled

@@ -12,7 +12,7 @@
 
 - name: Add Azure CLI repository into sources list
   ansible.builtin.apt_repository:
-    repo: deb https://packages.microsoft.com/repos/azure-cli/ bionic main
+    repo: deb https://packages.microsoft.com/repos/azure-cli/ focal main
     state: present
 
 - name: Add VSCode repository into sources list

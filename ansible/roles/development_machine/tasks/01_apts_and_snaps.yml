@@ -28,6 +28,7 @@
       - tmux
       - ufw
       - whois
+      - gnome-shell-extension-prefs
 
 - name: Install Discord
   community.general.snap:

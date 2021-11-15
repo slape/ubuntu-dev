@@ -12,7 +12,7 @@
 
 - name: Add hashicorp repository into sources list
   apt_repository:
-    repo: deb https://apt.releases.hashicorp.com bionic main
+    repo: deb https://apt.releases.hashicorp.com focal main
     state: present
 
 - name: Install Hashicorp Apt Packages

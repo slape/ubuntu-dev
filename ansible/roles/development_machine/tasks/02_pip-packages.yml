@@ -6,3 +6,4 @@
       - pre-commit
       - virtualenv
       - ansible
+      - youtube-dl

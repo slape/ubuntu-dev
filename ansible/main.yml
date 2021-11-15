@@ -4,10 +4,4 @@
   vars: {"ansible_python_interpreter": "/usr/bin/python3",}
   become: yes
   roles:
-    #- packages
-    #- brave
-    #- azure_cli
-    #- docker
-    #- hashicorp
-    - clean_up
-    #- harden
+    - development_machine

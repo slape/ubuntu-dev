@@ -1,0 +1,10 @@
+---
+- name: Change Hostname to 'ubuntu_dev'
+  hostname:
+    name: ubuntu_dev
+
+- name: Set a cron job to keep system up to date.
+  cron:
+    name: "update ssh"
+    day: "*/1"
+    job: "apt update && apt upgrade"

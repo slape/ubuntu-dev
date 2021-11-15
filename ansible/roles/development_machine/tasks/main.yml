@@ -1,0 +1,27 @@
+---
+- name: Install apt packages
+  import_tasks: 01_apt_packages.yml
+
+- name: Install pip packages
+  import_tasks: 02_pip-packages.yml
+    
+- name: Install Brave browser
+  import_tasks: 03_brave.yml
+
+- name: Install Hashicorp tools
+  import_tasks: 04_hashicorp.yml
+
+- name: Install Microsoft tools
+  import_tasks: 05_microsoft.yml
+
+- name: Install Docker Engine
+  import_tasks: 06_docker.yml
+
+- name: Clean up machine for prod
+  import_tasks: 07_clean_up.yml
+
+- name: Reset Developer user for prod
+  import_tasks: 08_reset_user.yml
+  
+- name: Basic Machine Hardening
+  import_tasks: 09_system.yml

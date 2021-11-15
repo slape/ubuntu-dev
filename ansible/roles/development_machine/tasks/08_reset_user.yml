@@ -1,0 +1,43 @@
+---
+- name: Remove all files associated with the developer user
+  user:
+    name: developer
+    state: absent
+    remove: yes
+
+- name: Create new developer account
+  user:
+    name: developer
+    shell: /bin/bash
+    groups: sudo
+    append: yes
+    generate_ssh_key: yes
+    password: $6$sU5IUZa.jzAG4zDx$pRysdw52ihkBZI/pcWoMlb4sHUriRSnN69GetV3K8cgfpnfMF2ej5ewQxXBh8umfaJfsybo4zCod/Fp6WeIn41
+
+- name: Cause password to expire on first login
+  command: passwd -e developer
+
+- name: Install VSCode Extensions
+  shell: |
+    sudo -H -u developer \
+    code \
+    --install-extension ms-vscode.powershell \
+    --install-extension ms-python.python \
+    --install-extension vscodevim.vim \
+    --install-extension ms-azuretools.vscode-docker \
+    --install-extension ms-vscode.azurecli \
+    --install-extension shakram02.bash-beautify \
+    --install-extension rogalmic.bash-debug \
+    --install-extension rebornix.ruby \
+    --install-extension hashicorp.terraform \
+    --install-extension mohsen1.prettify-json \
+    --install-extension redhat.vscode-yaml \
+    EOF
+
+- name: Install Custom .bashrc
+  copy: 
+    src: .bashrc
+    dest: /home/developer/.bashrc
+    owner: developer
+    group: developer
+    mode: 0644

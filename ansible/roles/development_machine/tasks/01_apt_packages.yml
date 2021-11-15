@@ -14,6 +14,7 @@
     install_recommends: yes
     force_apt_get: yes
     pkg:
+      - git
       - curl 
       - nmap
       - python3-pip
@@ -26,3 +27,4 @@
       - gnupg
       - tmux
       - ufw
+      - whois

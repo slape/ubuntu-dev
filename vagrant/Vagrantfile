@@ -3,7 +3,7 @@
 
 Vagrant.configure("2") do |config|
   config.vm.box = "slape/ubuntu-dev"
-  config.vm.box_version = "1.0"
+  config.vm.box_version = "1.0.0"
   config.vm.synced_folder "~", "/Shared/Host-Home"
 
   config.vm.provider "virtualbox" do |vb|

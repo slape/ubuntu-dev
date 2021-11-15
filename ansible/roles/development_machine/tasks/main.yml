@@ -1,6 +1,6 @@
 ---
 - name: Install apt packages
-  import_tasks: 01_apt_packages.yml
+  import_tasks: 01_apts_and_snaps.yml
 
 - name: Install pip packages
   import_tasks: 02_pip-packages.yml

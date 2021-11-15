@@ -28,3 +28,8 @@
       - tmux
       - ufw
       - whois
+
+- name: Install Discord
+  community.general.snap:
+    name:
+      - discord
